@@ -1,0 +1,7 @@
+{
+    "modelSwitch": {
+        "type": "checkbox",
+        "value": false,
+        "text": "12 Hour Model"
+    }
+}

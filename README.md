@@ -7,7 +7,7 @@
 #### 包含内容
 
 > 目前包含内容如下：
-> * [***数字翻页时钟***](https://gitee.com/locam/DIYproject/tree/master/HCJproject/Clock)
+> * [***数字翻页时钟***](https://github.com/Locam-cyj/DIYproject/tree/master/HCJproject/Clock)
 
 #### 其他
 

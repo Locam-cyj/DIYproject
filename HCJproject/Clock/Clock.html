@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>上下滚动的数字时钟</title>
     <link rel="stylesheet" href="Clock.css">
-    <!-- <script src="jquery.min.js"></script> -->
+    <script src="js/jquery.min.js"></script>
     <!--dev分支vscode-->
 </head>
 
@@ -70,8 +70,18 @@
         <div class="num">8</div>
         <div class="num">9</div>
     </div>
-
-    <script src="Clock.js"></script>
+    <div class="memo">
+        <div class="remainTime">
+            <div>今日剩余时间</div>
+            <div class="persent"></div>
+            <div>Live the moment</div>
+        </div>
+        <div class="memoTextDiv">
+            <div>今日要做</div>
+            <textarea class="memoText" placeholder="内容待输入..."></textarea>
+        </div>
+    </div>
+    <script src="js/Clock.js"></script>
 </body>
 
 </html>

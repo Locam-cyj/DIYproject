@@ -3,5 +3,21 @@
         "type": "checkbox",
         "value": false,
         "text": "12 Hour Model"
+    },
+    "memoSwitch": {
+        "type": "dropdown",
+        "value": 2,
+        "text": "Switch memo",
+        "items": [
+            "DayTimeRemain",
+            "Todo List",
+            "Both",
+            "None"
+        ]
+    },
+    "memoText": {
+        "type": "textbox",
+        "value": "",
+        "text": "MemoText"
     }
 }

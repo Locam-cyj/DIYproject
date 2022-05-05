@@ -17,6 +17,28 @@ body {
     overflow: hidden;
 }
 
+.memo {
+    position: absolute;
+    
+    right: 5%;
+    top: 18%;
+    letter-spacing: 4px;
+    font-size: 25px;
+    font-weight: bold;
+    width: 300px;
+    height: 500px;
+}
+
+.memoText{
+    background-color: #0e141b;
+    width: 290px;
+    height: 350px;
+    font-family: 'Jura';
+    font-size: 20px;
+    color: #e0e6eb;
+    border-color: #0e141b;
+}
+
 .column,
 .colon {
     /* 行内块元素 */

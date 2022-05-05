@@ -1,10 +1,10 @@
 {
-    "AppVersion": "0.1.0",
-    "Title": "Clock",
+    "AppVersion": "0.2.0",
+    "Title": "Clock v0.2",
     "Thumbnail": "Clock.jpg",
     "Preview": "Clock.gif",
     "Desc": "Digital Page Turn Clock",
     "Author": "Locam",
-    "Contact": "https://gitee.com/locam/Projects/tree/master/Lively/Clock",
+    "Contact": "https://gitee.com/locam/DIYproject/tree/master/HCJproject/Clock",
     "FileName": "Clock.html"
 }

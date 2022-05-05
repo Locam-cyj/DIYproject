@@ -8,7 +8,9 @@ let class_list = ['visible', 'near', 'far', 'far', 'distant', 'distant'];
 /* let is_24_hour_clock = true; */
 /* 配置信息 */
 let config = {
-    MODEL_SWITCH : true
+    MODEL_SWITCH : true,
+    MEMO_SWITCH : "both",
+    MEMOTEXT : ""
 };
 
 /* 重写lively Wallpaper提供的监听函数 */
@@ -16,6 +18,25 @@ function livelyPropertyListener(name, val){
     switch(name){
         case "modelSwitch":
             config.MODEL_SWITCH = !val;
+            break;
+        case "memoSwitch":
+            switch(val){
+                case 0:
+                    config.MEMO_SWITCH = "remainTime";
+                    break;
+                case 1:
+                    config.MEMO_SWITCH = "memoTextDiv";
+                    break;
+                case 2:
+                    config.MEMO_SWITCH = "both";
+                    break;
+                case 3:
+                    config.MEMO_SWITCH = "none";
+                    break;
+            }
+            break;
+        case "memoText":
+            config.MEMOTEXT = val;
             break;
     }
 }
@@ -63,4 +84,44 @@ setInterval(() => {
             ele2.className = "num " + getClass(n, i2);
         });
     });
+}, 1000);
+
+/* 四种状态，分别为只显示剩余时间、只显示备忘录、二者都显示以及二者都隐藏 */
+setInterval(function(){
+    if(config.MEMO_SWITCH == "remainTime"){
+        $(".memo").show();
+        $(".remainTime").show();
+        $(".memoTextDiv").hide();
+    }
+    if(config.MEMO_SWITCH == "memoTextDiv"){
+        $(".memo").show();
+        $(".remainTime").hide();
+        $(".memoTextDiv").show();
+    }
+    if(config.MEMO_SWITCH == "both"){
+        $(".memo").show();
+        $(".remainTime").show();
+        $(".memoTextDiv").show();
+    }
+    if(config.MEMO_SWITCH == "none"){
+        $(".memo").hide();
+        $(".remainTime").hide();
+        $(".memoTextDiv").hide();
+    }
+}, 1000);
+
+/* 更新备忘录内容 */
+setInterval(function(){
+    $(".memoText").text(config.MEMOTEXT);
+}, 1000);
+
+/* 计算剩余时间百分比 */
+setInterval(() => {
+    let d = new Date();
+    let remain = (1 - (d.getHours() * 60 * 60 + d.getMinutes() * 60 + d.getSeconds()) / 24 / 60 / 60) * 100;
+    //console.log(remain);
+    remain = remain.toFixed(2) + "%";
+    //console.log(remain);
+    $(".persent").text(remain);
+    //console.log($(".persent").text());
 }, 1000);

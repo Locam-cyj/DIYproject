@@ -19,5 +19,49 @@
         "type": "textbox",
         "value": "",
         "text": "MemoText"
+    },
+    "Label": {
+        "type": "label",
+        "value": "Alarm Clock"
+    },
+    "clockSet": {
+        "type": "textbox",
+        "value": "hh:mm",
+        "text": "Set Clock"
+    },
+    "sun": {
+        "type": "checkbox",
+        "value": false,
+        "text": "Sunday"
+    },
+    "mon": {
+        "type": "checkbox",
+        "value": false,
+        "text": "Monday"
+    },
+    "tues": {
+        "type": "checkbox",
+        "value": false,
+        "text": "Tuesday"
+    },
+    "wed": {
+        "type": "checkbox",
+        "value": false,
+        "text": "Wednesday"
+    },
+    "thurs": {
+        "type": "checkbox",
+        "value": false,
+        "text": "Thursday"
+    },
+    "fri": {
+        "type": "checkbox",
+        "value": false,
+        "text": "Friday"
+    },
+    "sat": {
+        "type": "checkbox",
+        "value": false,
+        "text": "Saturday"
     }
 }

@@ -5,12 +5,14 @@ let columns = Array.from(document.getElementsByClassName('column'));
 /* 设置样式名状态数组 */
 let class_list = ['visible', 'near', 'far', 'far', 'distant', 'distant'];
 /* true为24小时制，false为12小时制 */
-/* let is_24_hour_clock = true; */
+let once = true;
 /* 配置信息 */
 let config = {
     MODEL_SWITCH : true,
     MEMO_SWITCH : "both",
-    MEMOTEXT : ""
+    MEMOTEXT : "",
+    CLOCK_SET : "hh:mm",
+    WEEK : [false,false,false,false,false,false,false]
 };
 
 /* 重写lively Wallpaper提供的监听函数 */
@@ -37,6 +39,30 @@ function livelyPropertyListener(name, val){
             break;
         case "memoText":
             config.MEMOTEXT = val;
+            break;
+        case "clockSet":
+            config.CLOCK_SET = val;
+            break;
+        case "sun":
+            config.WEEK[0] = val;
+            break;
+        case "mon":
+            config.WEEK[1] = val;
+            break;
+        case "tues":
+            config.WEEK[2] = val;
+            break;
+        case "wed":
+            config.WEEK[3] = val;
+            break;
+        case "thurs":
+            config.WEEK[4] = val;
+            break;
+        case "fri":
+            config.WEEK[5] = val;
+            break;
+        case "sat":
+            config.WEEK[6] = val;
             break;
     }
 }
@@ -124,4 +150,41 @@ setInterval(() => {
     //console.log(remain);
     $(".persent").text(remain);
     //console.log($(".persent").text());
+}, 1000);
+
+/* 闹钟功能 */
+setInterval(() => {
+    //console.log(/^([0-9]|1[0-9]|2[0-3]):([0-9]|[1-5][0-9])$/.test(config.CLOCK_SET));
+    //console.log(once);
+    if(/^([0-9]|1[0-9]|2[0-3]):([0-9]|[1-5][0-9])$/.test(config.CLOCK_SET)){
+        let d = new Date();
+        let hh = config.MODEL_SWITCH ? parseInt(config.CLOCK_SET.split(":")[0]) : d.getHours() >= 12 ? parseInt(config.CLOCK_SET.split(":")[0]) + 12 : parseInt(config.CLOCK_SET.split(":")[0]);
+        let mm = parseInt(config.CLOCK_SET.split(":")[1]);
+        //console.log(d.getDay());
+        //console.log(d.getMinutes());
+        for(var i = 0; i < 7; i++){
+            if(config.WEEK[i]){
+                once = false;
+                break;
+            }
+            else{
+                once = true;
+            }
+        }
+        if(!once){
+            //console.log(config.WEEK[d.getDay()]);
+            if(config.WEEK[d.getDay()] && d.getHours() == hh && d.getMinutes() == mm && d.getSeconds() == 0){
+                alert("现在是"+hh+":"+mm);
+                //console.log("!once");
+            }
+        }
+        else{
+            //console.log(once);
+            if(d.getHours() == hh && d.getMinutes() == mm && d.getSeconds() == 0){
+                alert("现在是"+hh+":"+mm);
+                config.CLOCK_SET = "hh:mm";
+                //console.log("once");
+            }
+        }
+    }
 }, 1000);

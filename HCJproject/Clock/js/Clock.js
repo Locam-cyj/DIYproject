@@ -115,7 +115,7 @@ setInterval(() => {
 }, 1000);
 
 /* 四种状态，分别为只显示剩余时间、只显示备忘录、二者都显示以及二者都隐藏 */
-function smemoSwitch() {
+function memoSwitch() {
     if(config.MEMO_SWITCH == "remainTime"){
         $(".memo").show();
         $(".remainTime").show();

@@ -36,9 +36,11 @@ function livelyPropertyListener(name, val){
                     config.MEMO_SWITCH = "none";
                     break;
             }
+            memoSwitch();
             break;
         case "memoText":
             config.MEMOTEXT = val;
+            memoText();
             break;
         case "clockSet":
             config.CLOCK_SET = val;
@@ -113,7 +115,7 @@ setInterval(() => {
 }, 1000);
 
 /* 四种状态，分别为只显示剩余时间、只显示备忘录、二者都显示以及二者都隐藏 */
-setInterval(function(){
+function smemoSwitch() {
     if(config.MEMO_SWITCH == "remainTime"){
         $(".memo").show();
         $(".remainTime").show();
@@ -134,12 +136,12 @@ setInterval(function(){
         $(".remainTime").hide();
         $(".memoTextDiv").hide();
     }
-}, 1000);
+}
 
 /* 更新备忘录内容 */
-setInterval(function(){
+function memoText() {
     $(".memoText").text(config.MEMOTEXT);
-}, 1000);
+}
 
 /* 计算剩余时间百分比 */
 setInterval(() => {
